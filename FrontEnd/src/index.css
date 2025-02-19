@@ -67,3 +67,143 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer components {
+    .tooltip {
+        position: relative;
+    }
+
+    .tooltip:hover::after {
+        content: attr(title);
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 4px 8px;
+        background-color: rgba(0, 0, 0, 0.8);
+        color: white;
+        border-radius: 4px;
+        font-size: 12px;
+        white-space: nowrap;
+        z-index: 10;
+    }
+
+    /* Improve canvas accessibility */
+    canvas:focus {
+        outline: 2px solid #4299e1;
+        outline-offset: 2px;
+    }
+}
+
+/* Add focus styles for better keyboard navigation */
+.button:focus-visible {
+    outline: 2px solid #4299e1;
+    outline-offset: 2px;
+}
+
+/* Add visual feedback for interactive elements */
+.button:active {
+    transform: scale(0.98);
+}
+
+/* Improve color swatch accessibility */
+.mantine-ColorSwatch-root {
+    transition: transform 0.2s;
+}
+
+.mantine-ColorSwatch-root:hover {
+    transform: scale(1.1);
+}
+
+/* Add keyboard focus indicators */
+*:focus-visible {
+    outline: 2px solid #4299e1;
+    outline-offset: 2px;
+}
+
+/* Add these new styles */
+.tool-button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.color-swatch-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+/* Enhanced tooltip styles */
+.tooltip::after {
+    content: attr(title);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.5rem 1rem;
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+    border-radius: 0.5rem;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    z-index: 50;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.tooltip:hover::after {
+    opacity: 1;
+    visibility: visible;
+    bottom: calc(100% + 5px);
+}
+
+/* Button hover effects */
+.button {
+    position: relative;
+    overflow: hidden;
+}
+
+.button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease, height 0.3s ease;
+}
+
+.button:hover::after {
+    width: 200%;
+    height: 200%;
+}
+
+/* Active state animation */
+.button:active {
+    transform: scale(0.95);
+}
+
+/* Color swatch enhancements */
+.mantine-ColorSwatch-root {
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.mantine-ColorSwatch-root:hover {
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: scale(1.1);
+}
+
+/* Canvas focus state */
+canvas:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.5);
+}
