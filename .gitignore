@@ -39,6 +39,7 @@ build/
 # Virtual environment
 venv/
 env/
+bin/
 ENV/
 .venv/
 .env
