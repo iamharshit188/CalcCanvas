@@ -5,3 +5,4 @@ Integrate MathJax
 Implement API call to backend
 Display results on canvas
 Add user instructions modal
+Implement dark mode toggle
