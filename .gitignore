@@ -1,0 +1,66 @@
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+yarn-debug.log
+package-lock.json
+yarn.lock
+
+# Build output
+build/
+dist/
+*.tgz
+
+# React specific
+*.js
+*.jsx
+*.ts
+*.tsx
+*.css
+*.scss
+*.map
+public/static/
+public/favicon.ico
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+*.egg-info/
+dist/
+build/
+*.egg
+*.whl
+*.log
+
+# Virtual environment
+venv/
+env/
+ENV/
+.venv/
+.env
+
+# IDEs and editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+Desktop.ini
+
+# Miscellaneous
+*.bak
+*.tmp
+*.temp
+*.orig
+*.log
