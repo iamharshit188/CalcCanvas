@@ -3,8 +3,7 @@ import { Button } from '@/components/ui/button';
 import { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import Draggable from 'react-draggable';
-import {SWATCHES} from '@/constants';
-// import {LazyBrush} from 'lazy-brush';
+import { SWATCHES } from '@/constants';
 
 interface GeneratedResult {
     expression: string;
@@ -26,12 +25,6 @@ export default function Home() {
     const [result, setResult] = useState<GeneratedResult>();
     const [latexPosition, setLatexPosition] = useState({ x: 10, y: 200 });
     const [latexExpression, setLatexExpression] = useState<Array<string>>([]);
-
-    // const lazyBrush = new LazyBrush({
-    //     radius: 10,
-    //     enabled: true,
-    //     initialPoint: { x: 0, y: 0 },
-    // });
 
     useEffect(() => {
         if (latexExpression.length > 0 && window.MathJax) {
@@ -59,7 +52,7 @@ export default function Home() {
 
     useEffect(() => {
         const canvas = canvasRef.current;
-    
+
         if (canvas) {
             const ctx = canvas.getContext('2d');
             if (ctx) {
@@ -68,7 +61,6 @@ export default function Home() {
                 ctx.lineCap = 'round';
                 ctx.lineWidth = 3;
             }
-
         }
         const script = document.createElement('script');
         script.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML';
@@ -77,14 +69,13 @@ export default function Home() {
 
         script.onload = () => {
             window.MathJax.Hub.Config({
-                tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]},
+                tex2jax: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
             });
         };
 
         return () => {
             document.head.removeChild(script);
         };
-
     }, []);
 
     const renderLatexToCanvas = (expression: string, answer: string) => {
@@ -100,7 +91,6 @@ export default function Home() {
             }
         }
     };
-
 
     const resetCanvas = () => {
         const canvas = canvasRef.current;
@@ -140,11 +130,11 @@ export default function Home() {
     };
     const stopDrawing = () => {
         setIsDrawing(false);
-    };  
+    };
 
     const runRoute = async () => {
         const canvas = canvasRef.current;
-    
+
         if (canvas) {
             const response = await axios({
                 method: 'post',
@@ -159,7 +149,6 @@ export default function Home() {
             console.log('Response', resp);
             resp.data.forEach((data: Response) => {
                 if (data.assign === true) {
-                    // dict_of_vars[resp.result] = resp.answer;
                     setDictOfVars({
                         ...dictOfVars,
                         [data.expr]: data.result
@@ -203,7 +192,7 @@ export default function Home() {
                 <Button
                     onClick={() => setReset(true)}
                     className='z-20 bg-black text-white'
-                    variant='default' 
+                    variant='default'
                     color='black'
                 >
                     Reset
@@ -243,6 +232,11 @@ export default function Home() {
                     </div>
                 </Draggable>
             ))}
+
+            {/* Footer */}
+            <footer className="absolute bottom-0 left-0 w-full text-center bg-black text-white p-2">
+                Made With Love by team waterplane
+            </footer>
         </>
     );
 }
