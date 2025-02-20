@@ -1,8 +1,28 @@
-import React from "react";
-Implement drawing functionality
-Add color selection and eraser tools
-Integrate MathJax
-Implement API call to backend
-Display results on canvas
-Add user instructions modal
-Implement dark mode toggle
+import {createBrowserRouter, RouterProvider} from 'react-router-dom';
+import '@mantine/core/styles.css';
+import { MantineProvider } from '@mantine/core';
+
+import Home from '@/screens/home';
+
+import '@/index.css';
+
+const paths = [
+    {
+        path: '/',
+        element: (
+          <Home/>
+        ),
+    },
+];
+
+const BrowserRouter = createBrowserRouter(paths);
+
+const App = () => {
+    return (
+    <MantineProvider>
+      <RouterProvider router={BrowserRouter}/>
+    </MantineProvider>
+    )
+};
+
+export default App;
